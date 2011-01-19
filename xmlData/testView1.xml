@@ -1,0 +1,9 @@
+<screenElements>
+	<screenElement type="MajorViewer">
+		<id>ITGMViewer</id>
+		<xloc>0</xloc>
+		<yloc>0</yloc>
+		<majorURL>itgmReqs.xml</majorURL>
+		<coursesURL>courses.xml</coursesURL>
+	</screenElement>
+</screenElements>

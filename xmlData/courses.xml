@@ -1,0 +1,50 @@
+<courses>
+	<course crNum="120" crName="Intro to ITGM" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
+		<crDescription>
+			This is the introductory class to the ITGM major.  Welcome and be afraid.
+		</crDescription>
+		<testimonlial>
+			Here is a testimonlial.
+		</testimonlial>
+		<testimonlial>
+			Here is a different testimonlial.
+		</testimonlial>
+	</course>
+	<course crNum="260" crName="Interactrive Design" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
+		<crDescription>
+			That flash class.
+		</crDescription>
+		<testimonlial>
+			I hate this class
+		</testimonlial>
+		<testimonlial>
+			I love this class. (and have proper puncuation)
+		</testimonlial>
+		<prereq>ITGM120</prereq>
+	</course>
+	<course crNum="250" crName="Fundementals of Game Design" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
+		<crDescription>
+			Game-crit without being game-crit
+		</crDescription>
+		<testimonlial>
+			Elfs, elfs, elfs.
+		</testimonlial>
+		<testimonlial>
+			I love Monopoly now.
+		</testimonlial>
+		<prereq>ITGM120</prereq>
+	</course>
+	<course crNum="241" crName="Sharp's happy fun lecture class" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
+		<crDescription>
+			Run for your lives
+		</crDescription>
+		<testimonlial>
+			Aww shit we boned.
+		</testimonlial>
+		<testimonlial>
+			...
+		</testimonlial>
+		<prereq>ITGM120</prereq>
+		<prereq>ITGM250</prereq>
+	</course>
+</courses>

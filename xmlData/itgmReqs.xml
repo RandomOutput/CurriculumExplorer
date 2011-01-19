@@ -1,0 +1,11 @@
+<majorReq>
+	<major majorName="InteractiveDesignAndGameDevelopment">
+		<courseReq crPrefix="ITGM" crNumber="120"></courseReq>
+		<courseReq crPrefix="ITGM" crNumber="260"></courseReq>
+		<courseReq crPrefix="ITGM" crNumber="250"></courseReq>
+	</major>
+	<major majorName="Animation">
+		<courseReq crPrefix="ANIM" crNumber="120"></courseReq>
+		<courseReq crPrefix="ANIM" crNumber="121"></courseReq>
+	<major>
+</majorReq>

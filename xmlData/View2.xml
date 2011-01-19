@@ -1,0 +1,9 @@
+<screenElements>
+	<screenElement type="BasicButton">
+		<id>button1</id>
+		<xLoc>150</xLoc>
+		<yLoc>200</yLoc>
+		<defaultData>Default Data</defaultData>
+		<link>testView1.xml</link>
+	</screenElement>
+</screenElements>
