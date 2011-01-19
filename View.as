@@ -62,22 +62,23 @@
 				var screenElementType:String = screenElement.@type;
 				switch(screenElementType) {
 					case "BasicButton":
-						newScreenElements.push(new BasicButton(this, screenElement.id, screenElement.xLoc, screenElement.yLoc, screenElement.link));
+						newScreenElements.push(new BasicButton(this, screenElement.id, screenElement.xloc, screenElement.yloc, screenElement.link));
 						break;
 					case "MajorViewer":
-						newScreenElements.push(new MajorViewer(this, screenElement.id, screenElement.xLoc, screenElement.yLoc, viewArgs, screenElement.coursesURL));
+						newScreenElements.push(new MajorViewer(this, screenElement.id, screenElement.xloc, screenElement.yloc, viewArgs, screenElement.coursesURL));
 						break;
 					case "SchoolSelector":
-						newScreenElements.push(new SchoolSelector(this, screenElement.id, screenElement.xLoc, screenElement.yloc, screenElement.coursesURL));
+						trace("screenElement.xLoc: " + screenElement.xLoc);
+						newScreenElements.push(new SchoolSelector(this, screenElement.id, screenElement.xloc, screenElement.yloc, screenElement.coursesURL));
 						break;
 					case "MajorSelector":
-						newScreenElements.push(new MajorSelector(this, screenElement.id, screenElement.xLoc, screenElement.yloc, viewArgs, screenElement.coursesURL));
+						newScreenElements.push(new MajorSelector(this, screenElement.id, screenElement.xloc, screenElement.yloc, viewArgs, screenElement.coursesURL));
 						break;
 					case "SchoolIcon":
-						newScreenElements.push(new SchoolIcon(this, screenElement.id, viewArgs, screenElement.xLoc, screenElement.yLoc));
+						newScreenElements.push(new SchoolIcon(this, screenElement.id, viewArgs, screenElement.xloc, screenElement.yloc));
 						break;
 					case "MajorIcon":
-						newScreenElements.push(new MajorIcon(this, screenElement.id, viewArgs, screenElement.xLoc, screenElement.yLoc));
+						newScreenElements.push(new MajorIcon(this, screenElement.id, viewArgs, screenElement.xloc, screenElement.yloc));
 						break;
 					default:
 						trace("ERROR, unknown screenElement type: " + screenElementType);

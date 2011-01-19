@@ -53,10 +53,12 @@
 		}
 		
 		private function populateView() {
+			trace("school selector x: " + this.x);
+			trace("school selector y: " + this.y);
 			for (var i:int=0;i<schools.length; i++) {
 				var newID:String = "" + id + "_" + i;
-				var newX:int = 240 * (i % 2);
-				var newY:int = 365 * (Math.floor(i / 2));
+				var newX:int = this.x + (240 * (i % 2));
+				var newY:int = this.y + (365 * (Math.floor(i / 2)));
 				var newSchoolIcon = new SchoolIcon(handler, newID, schools[i], newX, newY); 
 				handler.addChild(newSchoolIcon);
 			}

@@ -1,8 +1,15 @@
 <screenElements>
 	<screenElement type="MajorViewer">
 		<id>ITGMViewer</id>
-		<xloc>0</xloc>
-		<yloc>0</yloc>
+		<xloc>20</xloc>
+		<yloc>20</yloc>
 		<coursesURL>courses.xml</coursesURL>
+	</screenElement>
+	<screenElement type="BasicButton">
+		<id>backButton</id>
+		<xloc>87</xloc>
+		<yloc>695</yloc>
+		<defaultData>Back</defaultData>
+		<link>main.xml</link>
 	</screenElement>
 </screenElements>

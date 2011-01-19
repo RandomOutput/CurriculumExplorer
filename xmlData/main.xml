@@ -1,14 +1,14 @@
 <screenElements>
 	<screenElement type="SchoolSelector">
 		<id>SchoolSelector</id>
-		<xloc>204</xloc>
+		<xloc>15</xloc>
 		<yloc>32</yloc>
 		<coursesURL>courses.xml</coursesURL>
 	</screenElement>
 	<screenElement type="BasicButton">
 		<id>backButton</id>
-		<xLoc>87</xLoc>
-		<yLoc>695</yLoc>
+		<xloc>87</xloc>
+		<yloc>695</yloc>
 		<defaultData>Back</defaultData>
 		<link>main.xml</link>
 	</screenElement>

@@ -34,12 +34,12 @@
 			var xmlData = new XML(e.target.data);
 			var courseList:XMLList = xmlData.course; 
 			for each  (var course:XML  in courseList)  {				
-				if(majors.length == 0 && course.@crMajor != "") {
+				if(majors.length == 0 && course.@crMajor != "" && course.@crSchool == viewArgs) {
 					majors.push(course.@crMajor);
 				}
 				
 				for(var i=0;i<majors.length;i++) {
-					if(majors[i] != course.@crMajor && course.@crMajor != "") {
+					if(majors[i] != course.@crMajor && course.@crMajor != "" && course.@crSchool == viewArgs) {
 						if(i == (majors.length -1)) {
 							majors.push(course.@crMajor);
 						}
@@ -56,8 +56,8 @@
 		private function populateView() {
 			for (var i:int=0;i<majors.length; i++) {
 				var newID:String = "" + id + "_" + i;
-				var newX:int = 240 * (i % 2);
-				var newY:int = 365 * (Math.floor(i / 2));
+				var newX:int = this.x + (240 * (i % 2));
+				var newY:int = this.y + (365 * (Math.floor(i / 2)));
 				var newMajorIcon = new MajorIcon(handler, newID, majors[i], newX, newY); 
 				handler.addChild(newMajorIcon);
 			}

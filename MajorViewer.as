@@ -94,8 +94,8 @@
 		private function populateView() {
 			for (var i:int=0;i<coursesForView.length; i++) {
 				var newID:String = "" + id + "_" + i;
-				var newX:int = 400 * (i % 2);
-				var newY:int = 400 * (Math.floor(i / 2));
+				var newX:int = this.x + (400 * (i % 3));
+				var newY:int = this.y + (125 * (Math.floor(i / 3)));
 				trace("-----");
 				trace("i: " + i);
 				trace("i/2 floored: " + Math.floor(i/2));

@@ -11,8 +11,8 @@
 			courseList = _courseList;
 			
 			this.titleHeader.text = "" + course.getCrPrefix() + " " + course.getCrNum() + " - " + course.getCrName();
-			this.school.text = "" + course.getSchool();
-			this.crDescription.text = "" + course.getCrDescription();
+			//this.school.text = "" + course.getSchool();
+			//this.crDescription.text = "" + course.getCrDescription();
 			
 			var prereqTemp:Vector.<String> = course.getPreReqList();
 			trace("prereqTemp: " + prereqTemp);
