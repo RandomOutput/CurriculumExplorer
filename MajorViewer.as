@@ -87,7 +87,7 @@
 					preReqList.push(thisPrereq);
 				}
 				
-				courses.push(new Course(course.@crNum, course.@crName, course.@crPrefix, course.@crSchool, course.crDescription, testList, imageURLList, preReqList));
+				courses.push(new Course(course.@crNum, course.@crName, course.@crMajor, course.@crPrefix, course.@crSchool, course.crDescription, testList, imageURLList, preReqList));
 			}
 		}
 		

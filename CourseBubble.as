@@ -1,12 +1,12 @@
 ﻿package  {
 	
-	public class CourseBubble extends ScreenElement{
+	public class CourseBubble extends BasicButton{
 		private var course:Course;
 		private var courseList:Vector.<Course>;
 
 		public function CourseBubble(_handler:View, _id:String, _course:Course, _courseList:Vector.<Course>, _xLoc:int = 0, _yLoc:int = 0) {
 			trace("gogo bubble");
-			super(_handler, _id, _xLoc, _yLoc);
+			super(_handler, _id, _xLoc, _yLoc, "-1");
 			course = _course;
 			courseList = _courseList;
 			
@@ -21,8 +21,9 @@
 			}
 		}
 		
-		override public function init() {
-			
+		override protected function clickAction():void {
+			var viewArgs:String = "" + course.getCrPrefix() + course.getCrNum();
+			handler.handler.loadView("courseDetailScreen.xml", viewArgs);
 		}
 	}
 }

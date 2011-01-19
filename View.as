@@ -80,6 +80,8 @@
 					case "MajorIcon":
 						newScreenElements.push(new MajorIcon(this, screenElement.id, viewArgs, screenElement.xloc, screenElement.yloc));
 						break;
+					case "CourseViewer":
+						newScreenElements.push(new CourseViewer(this, screenElement.id, screenElement.xloc, screenElement.yloc, viewArgs, screenElement.coursesURL));
 					default:
 						trace("ERROR, unknown screenElement type: " + screenElementType);
 						break;

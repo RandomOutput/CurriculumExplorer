@@ -3,6 +3,7 @@
 	public class Course{
 		private var crNum:int;
 		private var crName:String;
+		private var crMajor:String;
 		private var crPrefix:String;
 		private var crSchool:String;
 		private var crDescription:String;
@@ -10,9 +11,10 @@
 		private var imageURLList:Vector.<String>;
 		private var preReqList:Vector.<String>;
 
-		public function Course(_crNum, _crName, _crPrefix, _crSchool, _crDescription, _testList, _imageURLList, _preReqList) {
+		public function Course(_crNum, _crName, _crMajor, _crPrefix, _crSchool, _crDescription, _testList, _imageURLList, _preReqList) {
 			crNum = _crNum;
 			crName = _crName;
+			crMajor = _crMajor;
 			crPrefix = _crPrefix;
 			crSchool = _crSchool;
 			crDescription = _crDescription;
@@ -27,6 +29,10 @@
 		
 		public function getCrName():String {
 			return crName;
+		}
+		
+		public function getCrMajor():String {
+			return crMajor;
 		}
 		
 		public function getCrPrefix():String {

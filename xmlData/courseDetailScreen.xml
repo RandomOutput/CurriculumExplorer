@@ -1,0 +1,15 @@
+<screenElements>
+	<screenElement type="CourseViewer">
+		<id>CourseViewer</id>
+		<xloc>15</xloc>
+		<yloc>32</yloc>
+		<coursesURL>courses.xml</coursesURL>
+	</screenElement>
+	<screenElement type="BasicButton">
+		<id>backButton</id>
+		<xloc>87</xloc>
+		<yloc>695</yloc>
+		<defaultData>Back</defaultData>
+		<link>main.xml</link>
+	</screenElement>
+</screenElements>
