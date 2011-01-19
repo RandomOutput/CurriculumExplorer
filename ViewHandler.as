@@ -8,7 +8,7 @@
 		public var inputHandler:InputHandler;
 		public var dataHandler:DataHandler;
 		
-		private var startViewURL = "testView1.xml";
+		private var startViewURL = "main.xml";
 		private var startViewArgs = "Interactive Design And Game Development";
 		private var activeView:View;
 		private var backStack:Vector.<View>;
@@ -29,24 +29,24 @@
 		public function tick(_currentTime) {
 			currentTime = _currentTime
 			
+			if(activeView) {
+				activeView.tick(currentTime);
+			}
+			
 			for(var i:int=0;i<backStack.length;i++) {
 				if(backStack[i].markedForDeath = true) {
 					this.removeChild(backStack[i]);
 					backStack.splice(i,1);
 				}
 			}
-			
-			if(activeView) {
-				activeView.tick(currentTime);
-			}
 		}
 		
 		//outro old view, init new view, add oldView to back stack
 		public function loadView(viewURL:String, viewArgs:String = "") {
-			trace("loadView");
+			trace("loadView: " + viewURL);
 			
 			var delayTime:Number;
-			var newView = new View(viewURL, viewArgs);
+			var newView = new View(this, viewURL, viewArgs);
 			
 			if(activeView != null) {
 				backStack.push(activeView);
@@ -54,7 +54,7 @@
 			}
 			
 			this.addChild(newView);
-			newView.init(this, delayTime, currentTime);
+			newView.init(delayTime, currentTime);
 			activeView = newView;
 		}
 		

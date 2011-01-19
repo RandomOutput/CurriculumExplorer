@@ -11,7 +11,7 @@
 		private var courses:Vector.<Course>;
 		private var electives:Vector.<Course>;
 
-		public function MajorViewer(_handler:ViewHandler, _id:String, _xLoc:int, _yLoc:int, _viewArgs:String, _coursesURL:String) {
+		public function MajorViewer(_handler:View, _id:String, _xLoc:int, _yLoc:int, _viewArgs:String, _coursesURL:String) {
 			super(_handler, _id, _xLoc, _yLoc);
 			viewArgs = _viewArgs;
 			coursesURL = _coursesURL;

@@ -3,7 +3,7 @@
 	public class SchoolIcon extends BasicButton{
 		private var schoolName:String;
 		
-		public function SchoolIcon(_handler:ViewHandler, _id:String, _schoolName:String, _xLoc:int = 0, _yLoc:int = 0) {
+		public function SchoolIcon(_handler:View, _id:String, _schoolName:String, _xLoc:int = 0, _yLoc:int = 0) {
 			//GOING TO USE A DIFFERENT STRATEGY FOR SWITCHING TO THE MAJOR VIEW
 			//convert the name of the school to the link for the school's view page
 			//var noSpaceShoolName:String = removeSpaces(_schoolName);
@@ -27,7 +27,7 @@
 		}
 		
 		override protected function clickAction():void {
-			handler.loadView("majorSelector.xml", schoolName);
+			handler.handler.loadView("majorSelectionScreen.xml", schoolName);
 		}
 	}
 }

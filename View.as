@@ -9,22 +9,22 @@
 		protected var dataURL:String;
 		protected var viewArgs:String;
 		
-		private var handler:ViewHandler;
+		public var handler:ViewHandler;
 		private var delayTime:int;
 		private var currentTime:int;
 		private var dataHandler:DataHandler;
 		private var screenElements:Vector.<ScreenElement>;
 		public var markedForDeath:Boolean;
 
-		public function View(_dataURL = "defaultView.xml", _viewArgs:String = "") {
+		public function View(_handler:ViewHandler, _dataURL = "defaultView.xml", _viewArgs:String = "") {
+			handler = _handler;
 			dataURL = "./xmlData/" + _dataURL;
 			viewArgs = _viewArgs;
 			screenElements = new Vector.<ScreenElement>;
 			markedForDeath = false;
 		}
 		
-		public function init(_handler:ViewHandler, _delayTime:int, _currentTime:int) {
-			handler = _handler;
+		public function init(_delayTime:int, _currentTime:int) {
 			delayTime = _delayTime;
 			currentTime = _currentTime;
 			
@@ -35,9 +35,12 @@
 			
 		}
 		
-		public function tick(currentTime) {
-			for(var i:int=0;i<this.numChildren;i++){
-				(this.getChildAt(i) as ScreenElement).tick();
+		public function tick(currentTime) {			
+			//trace("View: " + dataURL + " - handler: " + this.handler);
+			for(var j:int=0;j<this.numChildren;j++){
+				if(this.getChildAt(j) is ScreenElement && markedForDeath != true) {
+					(this.getChildAt(j) as ScreenElement).tick();
+				}
 			}
 		}
 		
@@ -59,22 +62,22 @@
 				var screenElementType:String = screenElement.@type;
 				switch(screenElementType) {
 					case "BasicButton":
-						newScreenElements.push(new BasicButton(handler, screenElement.id, screenElement.xLoc, screenElement.yLoc, screenElement.link));
+						newScreenElements.push(new BasicButton(this, screenElement.id, screenElement.xLoc, screenElement.yLoc, screenElement.link));
 						break;
 					case "MajorViewer":
-						newScreenElements.push(new MajorViewer(handler, screenElement.id, screenElement.xLoc, screenElement.yLoc, viewArgs, screenElement.coursesURL));
+						newScreenElements.push(new MajorViewer(this, screenElement.id, screenElement.xLoc, screenElement.yLoc, viewArgs, screenElement.coursesURL));
 						break;
 					case "SchoolSelector":
-						newScreenElements.push(new SchoolSelector(handler, screenElement.id, screenElement.xLoc, screenElement.yloc, screenElement.coursesURL));
+						newScreenElements.push(new SchoolSelector(this, screenElement.id, screenElement.xLoc, screenElement.yloc, screenElement.coursesURL));
 						break;
 					case "MajorSelector":
-						newScreenElements.push(new MajorSelector(handler, screenElement.id, screenElement.xLoc, screenElement.yloc, viewArgs, screenElement.coursesURL));
+						newScreenElements.push(new MajorSelector(this, screenElement.id, screenElement.xLoc, screenElement.yloc, viewArgs, screenElement.coursesURL));
 						break;
 					case "SchoolIcon":
-						newScreenElements.push(new SchoolIcon(handler, screenElement.id, viewArgs, screenElement.xLoc, screenElement.yLoc));
+						newScreenElements.push(new SchoolIcon(this, screenElement.id, viewArgs, screenElement.xLoc, screenElement.yLoc));
 						break;
 					case "MajorIcon":
-						newScreenElements.push(new MajorIcon(handler, screenElement.id, viewArgs, screenElement.xLoc, screenElement.yLoc));
+						newScreenElements.push(new MajorIcon(this, screenElement.id, viewArgs, screenElement.xLoc, screenElement.yLoc));
 						break;
 					default:
 						trace("ERROR, unknown screenElement type: " + screenElementType);
@@ -95,7 +98,7 @@
 		}
 		
 		public function kill() {
-			trace("kill");
+			trace("kill view: " + dataURL);
 			dataURL = null;
 			
 			handler = null;
@@ -105,7 +108,10 @@
 			
 			for(var i:int=0;i<screenElements.length;i++) {
 				screenElements[i].kill();
-				//this.removeChild(screenElements[i]);
+			}
+			
+			while(screenElements.length > 0) {
+				this.removeChild(screenElements[i]);
 			}
 			
 			screenElements = null;

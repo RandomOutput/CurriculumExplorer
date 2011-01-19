@@ -2,10 +2,10 @@
 	import flash.display.Sprite;
 	
 	public class ScreenElement extends Sprite{
-		protected var handler:ViewHandler;
+		protected var handler:View;
 		protected var id:String;
 
-		public function ScreenElement(_handler:ViewHandler, _id:String, _xLoc:int, _yLoc:int) {
+		public function ScreenElement(_handler:View, _id:String, _xLoc:int, _yLoc:int) {
 			handler = _handler;
 			id = _id;
 			this.x = _xLoc;

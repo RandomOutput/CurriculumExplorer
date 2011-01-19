@@ -7,7 +7,7 @@
 		private var coursesURL;
 		private var schools:Vector.<String>;
 
-		public function SchoolSelector(_handler:ViewHandler, _id:String, _xLoc:int, _yLoc:int, _coursesURL:String) {
+		public function SchoolSelector(_handler:View, _id:String, _xLoc:int, _yLoc:int, _coursesURL:String) {
 			super(_handler, _id, _xLoc, _yLoc);
 			coursesURL = _coursesURL;
 			schools = new Vector.<String>;
@@ -32,14 +32,19 @@
 			var courseList:XMLList = xmlData.course; 
 			
 			for each  (var course:XML  in courseList)  {				
-				for(var i=0;i<schools.length;i++) {
-					if(schools[i] != course.@crSchool) {
-						if(i == (schools.length -1)) {
-							schools.push(course.@crSchool);
+				if(schools.length == 0) {
+					schools.push(course.@crSchool);
+				} else {
+					
+					for(var i=0;i<schools.length;i++) {
+						if(schools[i] != course.@crSchool) {
+							if(i == (schools.length -1)) {
+								schools.push(course.@crSchool);
+							}
 						}
-					}
-					else {
-						break;
+						else {
+							break;
+						}
 					}
 				}
 			}

@@ -1,5 +1,5 @@
 <courses>
-	<course crNum="120" crName="Intro to ITGM" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
+	<course crNum="120" crName="Intro to ITGM" crMajor="Interactive Design and Game Development" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
 		<crDescription>
 			This is the introductory class to the ITGM major.  Welcome and be afraid.
 		</crDescription>
@@ -10,7 +10,7 @@
 			Here is a different testimonlial.
 		</testimonlial>
 	</course>
-	<course crNum="260" crName="Interactrive Design" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
+	<course crNum="260" crName="Interactrive Design" crMajor="Interactive Design and Game Development" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
 		<crDescription>
 			That flash class.
 		</crDescription>
@@ -22,7 +22,7 @@
 		</testimonlial>
 		<prereq>ITGM120</prereq>
 	</course>
-	<course crNum="250" crName="Fundementals of Game Design" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
+	<course crNum="250" crName="Fundementals of Game Design" crMajor="Interactive Design and Game Development" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
 		<crDescription>
 			Game-crit without being game-crit
 		</crDescription>
@@ -34,7 +34,7 @@
 		</testimonlial>
 		<prereq>ITGM120</prereq>
 	</course>
-	<course crNum="241" crName="Sharp's happy fun lecture class" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
+	<course crNum="241" crName="Sharp's happy fun lecture class" crMajor="Interactive Design and Game Development" crPrefix="ITGM" crSchool="School of Film and Digtial Media and Performing Arts">
 		<crDescription>
 			Run for your lives
 		</crDescription>
@@ -46,5 +46,29 @@
 		</testimonlial>
 		<prereq>ITGM120</prereq>
 		<prereq>ITGM250</prereq>
+	</course>
+	<course crNum="110" crName="Advanced Survey of Computer Art Applications" crMajor="" crPrefix="CMPA" crSchool="School of Foundation Studies">
+		<crDescription>
+			This is the class where you learn to use the CS suite.
+		</crDescription>
+		<testimonlial>
+			Boring
+		</testimonlial>
+		<testimonlial>
+			more Boring
+		</testimonlial>
+		<prereq></prereq>
+	</course>
+	<course crNum="123" crName="Fake Anim Class" crMajor="Animation" crPrefix="ANIM" crSchool="School of Film and Digtial Media and Performing Arts">
+		<crDescription>
+			Some Class
+		</crDescription>
+		<testimonlial>
+			Test1
+		</testimonlial>
+		<testimonlial>
+			Test2
+		</testimonlial>
+		<prereq></prereq>
 	</course>
 </courses>

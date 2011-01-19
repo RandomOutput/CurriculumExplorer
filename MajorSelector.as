@@ -8,7 +8,7 @@
 		private var viewArgs:String;
 		private var majors:Vector.<String>;
 
-		public function MajorSelector(_handler:ViewHandler, _id:String, _xLoc:int, _yLoc:int, _viewArgs, _coursesURL:String) {
+		public function MajorSelector(_handler:View, _id:String, _xLoc:int, _yLoc:int, _viewArgs, _coursesURL:String) {
 			super(_handler, _id, _xLoc, _yLoc);
 			viewArgs = _viewArgs;
 			coursesURL = _coursesURL;
@@ -21,6 +21,7 @@
 		}
 		
 		private function loadCourseData() {
+			trace("load course data major");
 			var xmlLoader:URLLoader  = new URLLoader();
 			var xmlData:XML = new XML(); 
 			
@@ -32,10 +33,13 @@
 		private function handleCourseData(e:Event) {			
 			var xmlData = new XML(e.target.data);
 			var courseList:XMLList = xmlData.course; 
-			
 			for each  (var course:XML  in courseList)  {				
+				if(majors.length == 0 && course.@crMajor != "") {
+					majors.push(course.@crMajor);
+				}
+				
 				for(var i=0;i<majors.length;i++) {
-					if(majors[i] != course.@crMajor) {
+					if(majors[i] != course.@crMajor && course.@crMajor != "") {
 						if(i == (majors.length -1)) {
 							majors.push(course.@crMajor);
 						}

@@ -1,5 +1,5 @@
 <screenElements>
-	<screenElement type="SchoolSelector">
+	<screenElement type="MajorSelector">
 		<id>MajorSelector</id>
 		<xloc>204</xloc>
 		<yloc>32</yloc>
@@ -7,7 +7,7 @@
 	</screenElement>
 	<screenElement type="BasicButton">
 		<id>backButton</id>
-		<xLoc>87</xLoc>
+		<xLoc>200</xLoc>
 		<yLoc>695</yLoc>
 		<defaultData>Back</defaultData>
 		<link>main.xml</link>
