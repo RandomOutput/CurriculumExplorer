@@ -10,7 +10,7 @@
 
 		public function BasicButton(_handler:View, _id:String, _xLoc:int, _yLoc:int, _link:String) {
 			// constructor code
-			super(_handler, _id, _xLoc, _yLoc);
+			super(_handler, _id);
 			link = _link;
 			this.addEventListener(Event.ADDED_TO_STAGE, startLife);
 		}
@@ -27,12 +27,7 @@
 			trace("Button ID: " + this.id + " - handler.handler.inputHandler: " + handler.handler.inputHandler);*/
 			for each(var testPoint:Point in handler.handler.inputHandler.getInputs()){
 				if(this.hitTestPoint(testPoint.x, testPoint.y) && ((getTimer() - startTime >= HOLD_TIME))) {
-					if(link.substr(link.length-4, 4) == ".xml"){
-						handler.handler.loadView(link);
-					}
-					else {
-						clickAction();
-					}
+					clickAction();
 				}
 			}
 		}

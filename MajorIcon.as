@@ -6,7 +6,7 @@
 		public function MajorIcon(_handler:View, _id:String, _majorName:String, _xLoc:int = 0, _yLoc:int = 0) {
 			super(_handler, _id, _xLoc, _yLoc, "-1");
 			majorName = _majorName;
-			this.majorNameLabel.text = majorName;
+			this.labelText.text = majorName;
 		}
 		
 		private function removeSpaces(textToClean:String):String {
@@ -22,7 +22,7 @@
 		}
 		
 		override protected function clickAction():void {
-			handler.handler.loadView("majorViewerScreen.xml", majorName);
+			//handler.handler.loadView("majorViewerScreen.xml", majorName);
 		}
 	}
 }

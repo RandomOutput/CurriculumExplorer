@@ -27,7 +27,7 @@
 		}
 		
 		override protected function clickAction():void {
-			handler.handler.loadView("majorSelectionScreen.xml", schoolName);
+			//handler.handler.loadView("majorSelectionScreen.xml", schoolName);
 		}
 	}
 }

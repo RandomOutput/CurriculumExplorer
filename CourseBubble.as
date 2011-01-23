@@ -23,7 +23,7 @@
 		
 		override protected function clickAction():void {
 			var viewArgs:String = "" + course.getCrPrefix() + course.getCrNum();
-			handler.handler.loadView("courseDetailScreen.xml", viewArgs);
+			//handler.handler.loadView("courseDetailScreen.xml", viewArgs);
 		}
 	}
 }

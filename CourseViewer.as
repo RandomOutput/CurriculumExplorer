@@ -12,7 +12,7 @@
 		private var electives:Vector.<Course>;
 
 		public function CourseViewer(_handler:View, _id:String, _xLoc:int, _yLoc:int, _viewArgs:String, _coursesURL:String) {
-			super(_handler, _id, _xLoc, _yLoc);
+			super(_handler, _id);
 			viewArgs = _viewArgs;
 			coursesURL = _coursesURL;
 			courses = new Vector.<Course>;
