@@ -2,6 +2,7 @@
 	
 	public class PannerElement extends BasicButton{
 		private const MOVE_SPEED:int = 5;
+		private var followSpeed:int = 10;
 		
 		public var myPanner:Panner;
 		public var elementData:String;
@@ -9,6 +10,7 @@
 		public var prevElement:PannerElement;
 		private var spacing:int;
 		public var activeElement:Boolean;
+		public var returningElement:Boolean;
 		public var passive:Boolean;
 		private var subElements:Vector.<SubItem>;
 
@@ -21,6 +23,7 @@
 			nextElement = _next;
 			prevElement = _prev;
 			activeElement = false;
+			returningElement = false;
 			passive = false;
 			this.labelText.text = elementData;
 			subElements = new Vector.<SubItem>;
@@ -69,7 +72,21 @@
 				}
 			} else {
 				if(leader.x - this.x > (spacing + this.width)) {
-					this.x = leader.x - (spacing + this.width);
+					if(this.returningElement == true) {
+						if(leader.x - (this.x + this.followSpeed) > spacing + this.width) {
+							this.x += followSpeed;
+						}
+						else {
+							this.x = leader.x - spacing - this.width;
+						}
+						
+						if(leader.x - this.x <= (spacing + this.width)) {
+							returningElement = false;
+						}
+					}
+					else {
+						this.x = leader.x - spacing - this.width;
+					}
 				}
 			}
 		}
@@ -106,6 +123,7 @@
 		
 		public function recoverContents() {
 			activeElement = false;
+			returningElement = true;
 			for(var i:int=0;i<subElements.length;i++) {
 				subElements[i].goalX = this.x;
 				subElements[i].goalY = this.y;
