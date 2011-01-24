@@ -9,7 +9,7 @@
 			//var noSpaceShoolName:String = removeSpaces(_schoolName);
 			//var link:String = noSpacesSchoolName + "_reqs.xml";
 			
-			super(_handler, _id, _xLoc, _yLoc, "-1");
+			super(_handler, _id);
 			schoolName = _schoolName;
 			this.schoolNameLabel.text = schoolName;
 		}

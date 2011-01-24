@@ -6,7 +6,7 @@
 
 		public function CourseBubble(_handler:View, _id:String, _course:Course, _courseList:Vector.<Course>, _xLoc:int = 0, _yLoc:int = 0) {
 			trace("gogo bubble");
-			super(_handler, _id, _xLoc, _yLoc, "-1");
+			super(_handler, _id);
 			course = _course;
 			courseList = _courseList;
 			

@@ -58,14 +58,22 @@
 			newElement.x = elementX;
 			newElement.y = elementY;
 			this.addChild(newElement);
-			trace("addElementStage: " + stage);
+			//trace("addElementStage: " + stage);
 		}
 		
 		public function removeElement(element:ScreenElement) {
 			for(var i:int=0;i<screenElements.length;i++){
 				if(element == screenElements[i]) {
 					screenElements[i].kill();
-					this.removeChild(screenElements[i]);
+					if(this.contains(screenElements[i])) {
+						this.removeChild(screenElements[i]);
+						trace("removedElement: " + screenElements[i].id);
+					}
+					else {
+						trace("DOES NOT CONTAIN SCREENELEMENTS[i]: " + screenElements[i].id);
+						trace("ScreenElements[i] parent: " + screenElements[i].parent);
+						//screenElements[i].parent.removeChild(screenElements[i]);
+					}
 					screenElements.splice(i, 1);
 					return;
 				}

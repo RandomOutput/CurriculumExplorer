@@ -4,7 +4,7 @@
 		private var majorName:String;
 		
 		public function MajorIcon(_handler:View, _id:String, _majorName:String, _xLoc:int = 0, _yLoc:int = 0) {
-			super(_handler, _id, _xLoc, _yLoc, "-1");
+			super(_handler, _id);
 			majorName = _majorName;
 			this.labelText.text = majorName;
 		}

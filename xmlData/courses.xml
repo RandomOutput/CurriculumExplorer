@@ -71,4 +71,40 @@
 		</testimonlial>
 		<prereq></prereq>
 	</course>
+	<course crNum="123" crName="Fake GRDS Class" crMajor="Graphic Design" crPrefix="GRDS" crSchool="School of Film and Digtial Media and Performing Arts">
+		<crDescription>
+			Some Class
+		</crDescription>
+		<testimonlial>
+			Test1
+		</testimonlial>
+		<testimonlial>
+			Test2
+		</testimonlial>
+		<prereq></prereq>
+	</course>
+	<course crNum="123" crName="Fake SEQA Class" crMajor="Sequential Art" crPrefix="SEQA" crSchool="School of Film and Digtial Media and Performing Arts">
+		<crDescription>
+			Some Class
+		</crDescription>
+		<testimonlial>
+			Test1
+		</testimonlial>
+		<testimonlial>
+			Test2
+		</testimonlial>
+		<prereq></prereq>
+	</course>
+	<course crNum="123" crName="Fake SEQA Class" crMajor="Illustration" crPrefix="ILLU" crSchool="School of Film and Digtial Media and Performing Arts">
+		<crDescription>
+			Some Class
+		</crDescription>
+		<testimonlial>
+			Test1
+		</testimonlial>
+		<testimonlial>
+			Test2
+		</testimonlial>
+		<prereq></prereq>
+	</course>
 </courses>

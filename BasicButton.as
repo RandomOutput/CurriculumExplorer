@@ -4,14 +4,15 @@
 	import flash.utils.getTimer;
 	
 	public class BasicButton extends ScreenElement{
-		private const HOLD_TIME:int = 2500;
+		private const HOLD_TIME:int = 750;
 		private var startTime:int;
 		private var link:String;
+		private var clickActive:Boolean;
 
-		public function BasicButton(_handler:View, _id:String, _xLoc:int, _yLoc:int, _link:String) {
+		public function BasicButton(_handler:View, _id:String) {
 			// constructor code
 			super(_handler, _id);
-			link = _link;
+			clickActive = false;
 			this.addEventListener(Event.ADDED_TO_STAGE, startLife);
 		}
 		
@@ -25,9 +26,15 @@
 			trace("Button ID: " + this.id + " - handler: " + handler);
 			trace("Button ID: " + this.id + " - handler.handler: " + handler.handler);
 			trace("Button ID: " + this.id + " - handler.handler.inputHandler: " + handler.handler.inputHandler);*/
-			for each(var testPoint:Point in handler.handler.inputHandler.getInputs()){
-				if(this.hitTestPoint(testPoint.x, testPoint.y) && ((getTimer() - startTime >= HOLD_TIME))) {
-					clickAction();
+			var inputs:Vector.<Point> = handler.handler.inputHandler.getInputs();
+			for (var i:int=0;i<inputs.length;i++){
+				if(this.hitTestPoint(inputs[i].x, inputs[i].y) && ((getTimer() - startTime >= HOLD_TIME))) {
+					if(!clickActive) {
+						clickActive = true;
+						clickAction();
+					}
+				} else if(i == inputs.length - 1) {
+					clickActive = false;
 				}
 			}
 		}

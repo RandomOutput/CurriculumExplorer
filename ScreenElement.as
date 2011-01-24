@@ -3,7 +3,7 @@
 	
 	public class ScreenElement extends Sprite{
 		protected var handler:View;
-		protected var id:String;
+		public var id:String;
 
 		public function ScreenElement(_handler:View, _id:String) {
 			handler = _handler;

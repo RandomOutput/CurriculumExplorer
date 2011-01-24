@@ -12,6 +12,7 @@
 		private var courseList:Vector.<Course>;
 		private var majorList:Vector.<String>; //this is going to become a vector of major objects methinks
 		private var lastSpawnedIndex:int;
+		private var spawnPassiveElements:Boolean;
 
 		public function Panner(_handler:View, _courseList:Vector.<Course>) {
 			pannerCount++;
@@ -21,7 +22,7 @@
 			courseList = _courseList;
 			pannerElements = new Vector.<PannerElement>;
 			majorList = new Vector.<String>;
-			
+			spawnPassiveElements = false;
 		}
 		
 		override public function init() {
@@ -33,19 +34,86 @@
 			if(pannerHead != null) {
 				pannerHead.moveForward();
 			}
-			removePastHead();
-			spawnNewTail();
-			/*for each(var pannerElement:PannerElement in pannerElements) {
-				pannerElement.tick();
-			}*/
+			removePastElement();
+			spawnNewTail(pannerTail);
+			for each(var pannerElement:PannerElement in pannerElements) {
+				if(pannerElement.activeElement) {
+					handler.setChildIndex(pannerElement, handler.numChildren-1);
+				}
+			}
 		}
 		
-		public function removePastHead() {
-			
+		public function removePastElement() {
+			for(var j:int=0;j<pannerElements.length;j++) {
+				if(pannerElements[j] != pannerHead && pannerElements[j].x > 1280) {
+					var oldElement = pannerElements[j];
+					if(oldElement.prevElement != null) {
+						oldElement.prevElement.nextElement = oldElement.nextElement;
+					}
+					if(oldElement.nextElement != null) {
+						oldElement.nextElement.prevElement = oldElement.prevElement;
+					}
+					pannerElements.splice(j,1);
+					oldElement.kill();
+					handler.removeElement(oldElement);
+				} else if(pannerElements[j].x > 1280) {
+					var oldHead = pannerHead;
+					pannerHead = oldHead.prevElement;
+					for(var i:int=0;i<pannerElements.length;i++) {
+						if(pannerElements[i] == oldHead) {
+							pannerElements.splice(i,1);
+						}
+					}
+					oldHead.kill();
+					handler.removeElement(oldHead);
+				}
+			}
 		}
 		
-		public function spawnNewTail() {
-			
+		public function spawnNewTail(currentTail:PannerElement) {
+			if(currentTail == null) {
+				return;
+			} else if(currentTail.activeElement && (currentTail.nextElement != null)) {
+				spawnNewTail(currentTail.nextElement);
+				return;
+			} else if(currentTail.x > (this.x + spacing)){
+				trace("NEW TAIL");
+				if(lastSpawnedIndex < majorList.length - 1) {
+					lastSpawnedIndex++;
+				} else {
+					lastSpawnedIndex = 0;
+				}
+				var newPannerElement:PannerElement = new PannerElement(handler, majorList[lastSpawnedIndex], this, spacing, pannerTail);
+				if(spawnPassiveElements) {
+					newPannerElement.goPassive();
+				}
+				pannerTail.prevElement = newPannerElement;
+				pannerTail = newPannerElement;
+				pannerElements.push(newPannerElement);
+				var newX = (newPannerElement.nextElement.x - (spacing + iconWidth));
+				handler.addElement(newPannerElement, newX, this.y);
+			}
+		}
+		
+		public function recoverAll() {
+			for(var i:int=0;i<pannerElements.length;i++) {
+				pannerElements[i].recoverContents();
+			}
+		}
+		
+		public function passiveAll(except:PannerElement = null) {
+			for(var i:int=0;i<pannerElements.length;i++) {
+				if(except != null && except != pannerElements[i])
+				pannerElements[i].goPassive();
+			}
+			//spawnPassiveElements = true;
+		}
+		
+		public function unPassiveAll() {
+			for(var i:int=0;i<pannerElements.length;i++) {
+				pannerElements[i].endPassive();
+			}
+			//spawnPassiveElements = false;
 		}
 		
 		public function defineMajorList(){
@@ -55,7 +123,7 @@
 					majorList.push(course.getCrMajor());
 				}
 				for(var i:int=0;i<majorList.length;i++) {
-					if((course.getCrMajor() != majorList[i]) && (i == (majorList.length - 1))) {
+					if((course.getCrMajor() != majorList[i]) && (i == (majorList.length - 1)) && (course.getCrMajor() != "")) {
 						majorList.push(course.getCrMajor());
 					}
 				}
@@ -69,17 +137,22 @@
 			var newPannerElement:PannerElement;
 			
 			for each(var major:String in majorList) {
-				
+				trace("major: " + major);
 				if(pannerHead == null) {
-					newPannerElement = new PannerElement(handler, major, spacing);
+					newPannerElement = new PannerElement(handler, major, this, spacing);
+					if(spawnPassiveElements) {
+						newPannerElement.goPassive();
+					}
 					pannerElements.push(newPannerElement);
 					pannerHead = newPannerElement;
 					pannerTail = newPannerElement;
-					trace("newPannerElement: " + newPannerElement);
 					//stage.addChild(newPannerElement);
 					handler.addElement(newPannerElement, this.x, this.y);
 				} else {
-					newPannerElement = new PannerElement(handler, major, spacing, pannerTail);
+					newPannerElement = new PannerElement(handler, major, this, spacing, pannerTail);
+					if(spawnPassiveElements) {
+						newPannerElement.goPassive();
+					}
 					pannerTail.prevElement = newPannerElement;
 					pannerTail = newPannerElement;
 					pannerElements.push(newPannerElement);
@@ -90,7 +163,6 @@
 					trace("spacing: " + spacing);
 					trace("iconWidth: " + iconWidth);*/
 					var newX = (newPannerElement.nextElement.x - (spacing + iconWidth));
-					trace(newX);
 					handler.addElement(newPannerElement, newX, this.y);
 				}
 			}

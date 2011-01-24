@@ -55,8 +55,8 @@
 		}
 		
 		public function getCourses():Vector.<Course> {
-			trace("DATA HANDLER");
-			trace(courses);
+			//trace("DATA HANDLER");
+			//trace(courses);
 			return courses;
 		}
 		

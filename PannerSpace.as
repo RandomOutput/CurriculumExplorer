@@ -14,7 +14,7 @@
 		}
 		
 		override public function init() {
-			trace("PannerSpaceStage: " + stage);
+			//trace("PannerSpaceStage: " + stage);
 			loadView();
 		}
 		
