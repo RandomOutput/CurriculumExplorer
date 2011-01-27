@@ -8,11 +8,12 @@
 		private static var pannerCount:int = 0;
 		private var pannerHead:PannerElement;
 		private var pannerTail:PannerElement;	
-		private var pannerElements:Vector.<PannerElement>;
+		public var pannerElements:Vector.<PannerElement>;
 		private var courseList:Vector.<Course>;
 		private var majorList:Vector.<String>; //this is going to become a vector of major objects methinks
 		private var lastSpawnedIndex:int;
 		private var spawnPassiveElements:Boolean;
+		private var thereAreActive:Boolean;
 
 		public function Panner(_handler:View, _courseList:Vector.<Course>) {
 			pannerCount++;
@@ -23,6 +24,7 @@
 			pannerElements = new Vector.<PannerElement>;
 			majorList = new Vector.<String>;
 			spawnPassiveElements = false;
+			thereAreActive = false;
 		}
 		
 		override public function init() {
@@ -31,6 +33,7 @@
 		
 		override public function tick() {
 			//trace("panner tick");
+			thereAreActive = false;
 			if(pannerHead != null) {
 				pannerHead.moveForward();
 			}
@@ -39,7 +42,12 @@
 			for each(var pannerElement:PannerElement in pannerElements) {
 				if(pannerElement.activeElement) {
 					handler.setChildIndex(pannerElement, handler.numChildren-1);
+					thereAreActive = true;
 				}
+			}
+			
+			if(thereAreActive == false) {
+				unPassiveAll();
 			}
 		}
 		
@@ -106,7 +114,7 @@
 				if(except != null && except != pannerElements[i])
 				pannerElements[i].goPassive();
 			}
-			//spawnPassiveElements = true;
+			spawnPassiveElements = true;
 		}
 		
 		public function unPassiveAll() {

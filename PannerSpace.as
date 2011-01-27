@@ -14,7 +14,6 @@
 		}
 		
 		override public function init() {
-			//trace("PannerSpaceStage: " + stage);
 			loadView();
 		}
 		
@@ -25,8 +24,6 @@
 		}
 		
 		public function loadView() {
-			//trace("LOAD VIEW");
-			//trace(courseList);
 			majorPanner = new Panner(this, courseList);
 			this.addElement(majorPanner, 0,0);
 			majorPanner.init();

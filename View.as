@@ -7,7 +7,7 @@
 	public class View extends MovieClip {
 		
 		public var handler:ViewHandler;
-		protected var screenElements:Vector.<ScreenElement>;
+		public var screenElements:Vector.<ScreenElement>;
 		public var markedForDeath:Boolean;
 		
 
